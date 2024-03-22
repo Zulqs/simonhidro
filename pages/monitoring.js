@@ -58,6 +58,9 @@ const Monitoring = () => {
       
       
       </Container>
+      <Container>
+        <AddForm />
+      </Container>
       <Montab/>
       <Footer />
       <PopupWidget />
