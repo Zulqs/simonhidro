@@ -10,6 +10,7 @@ import { signOut, useSession } from "next-auth/react"
 import Suhuchart from "../components/suhuchart";
 import Phchart from "../components/phchart";
 import Container from "../components/container";
+import AddForm from "../components/AddDataForm";
 
 // Komponen Monitoring sebagai functional component
 const Monitoring = () => {
