@@ -30,7 +30,7 @@ export const authOptions = {
                 const { email, password } = credentials;
 
                 // Melakukan fetch ke endpoint login API
-                const res = await fetch("http://1.1.1.123:3000/api/login", {
+                const res = await fetch("https://simonhidro.vercel.app/api/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
