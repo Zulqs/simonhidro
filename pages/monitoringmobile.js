@@ -1,10 +1,8 @@
-// Import modul yang diperlukan dari Next.js dan komponen-komponen lokal
 import Head from "next/head";
 import Link from "next/link";
-import Navbarmobile from "../components/navbarmobile";
+import { useState } from "react";
 import SectionTitle from "../components/sectionTitle";
-import styles from '../components/layout.module.css';
-import { signOut, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import BackButton from "../components/backbutton";
 import Container from "../components/container";
 import Suhuchart from "../components/suhuchart";
@@ -12,13 +10,18 @@ import Phchart from "../components/phchart";
 import Montab from "../components/monitoringtable";
 import AddForm from "../components/AddDataForm";
 
-// Komponen Monitoring sebagai functional component
 const Monitoringmobile = () => {
-  // Mendapatkan session menggunakan useSession dari NextAuth
   const { data: session } = useSession()
   const user = session?.user;
 
-  // Jika pengguna bukan admin, tampilkan pesan akses tidak dikenal
+  const [isAddFormVisible, setIsAddFormVisible] = useState(false);
+  const [addFormButtonText, setAddFormButtonText] = useState("Tambah");
+
+  const toggleAddForm = () => {
+    setIsAddFormVisible(!isAddFormVisible);
+    setAddFormButtonText(isAddFormVisible ? "Tambah" : "Tutup");
+  };
+
   if (user?.role !== "admin") {
     return (
         <>
@@ -26,7 +29,6 @@ const Monitoringmobile = () => {
           <BackButton/>
         </Container>
         <Container>
-        {/* Tampilkan pesan akses tidak dikenal dan tautan untuk login */}
         <SectionTitle title="Akses tidak dikenal!">
           <Link href={"/auth/signinmobile"} className="underline inline-block px-4 py-2 text-lg font-normal text-green-800 rounded-md dark:text-gray-200 hover:text-green-800 focus:text-green-800 focus:bg-green-100 focus:outline-none dark:focus:bg-gray-800">
             Silahkan masuk terlebih dahulu
@@ -37,10 +39,8 @@ const Monitoringmobile = () => {
     )
   }
 
-  /* Jika pengguna adalah admin, tampilkan halaman monitoring */
   return (
     <>
-      {/* Konfigurasi head tag, termasuk title, description, dan icon */}
       <Head>
         <title>Monitoring</title>
         <meta
@@ -51,32 +51,28 @@ const Monitoringmobile = () => {
       </Head>
       <Container className="-mb-8"><BackButton/></Container>
       <Container>
-	<p className="font-semibold my-3 text-2xl">Monitoring Suhu</p>
-	<div className="h-[300px] bg-gray-100 rounded-xl pt-14 pr-7 pb-3"><Suhuchart/></div>
+        <p className="font-semibold my-3 text-2xl">Monitoring Suhu</p>
+        <div className="h-[300px] bg-gray-100 rounded-xl pt-14 pr-7 pb-3"><Suhuchart/></div>
         <p className="font-semibold my-3 text-2xl mt-7">Monitoring pH</p>
         <div className="h-[300px] bg-gray-100 rounded-xl pt-14 pr-7 pb-3"><Phchart/></div>
+
+        <div className="flex items-center justify-center">
+          <button
+            onClick={toggleAddForm}
+            className={`my-6 focus:ring-4 focus:outline-non font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${
+              isAddFormVisible ? "bg-red-700 hover:bg-red-800 focus:ring-red-300" : "bg-green-600 hover:bg-green-700 focus:ring-green-300"
+            } text-white`}
+          >
+            {addFormButtonText}
+          </button>
+        </div>
+
+        {/* Popup modal form */}
+        {isAddFormVisible && <AddForm onClose={toggleAddForm} />}
       </Container>
-      <Container>
-        <AddForm />
-      </Container>
-	<Montab/>
+	  <Montab/>
     </>
   );
 }
 
-// Komponen Mark sebagai contoh pemanfaatan komponen untuk penanda teks
-function Mark(props) {
-  return (
-    <>
-      {" "}
-      {/* Tampilkan teks di dalam elemen mark */}
-      <mark className="text-green-800 bg-green-100 rounded-md ring-green-100 ring-4 dark:ring-green-900 dark:bg-green-900 dark:text-green-200">
-        {props.children}
-      </mark>{" "}
-    </>
-  );
-}
-
-// Ekspor komponen Monitoring sebagai default
 export default Monitoringmobile;
-
