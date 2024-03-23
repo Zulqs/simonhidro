@@ -6,6 +6,7 @@ export default async function handler(req, res) {
   }
 
   const {
+    lubang,
     suhu,
     pH,
     ec,
@@ -19,8 +20,8 @@ export default async function handler(req, res) {
   try {
     // Insert data into the "monitoring" table
     await sql`
-      INSERT INTO monitoring (suhu, pH, ec, berat, tinggi, daun, warnadaun, tanggal)
-      VALUES (${suhu}, ${pH}, ${ec}, ${berat}, ${tinggi}, ${daun}, ${warnadaun}, ${tanggal})
+      INSERT INTO monitoring (lubang, suhu, pH, ec, berat, tinggi, daun, warnadaun, tanggal)
+      VALUES (${suhu}, ${suhu}, ${pH}, ${ec}, ${berat}, ${tinggi}, ${daun}, ${warnadaun}, ${tanggal})
     `;
     return res.status(201).json({ message: 'Berhasil menambah data!' });
   } catch (error) {

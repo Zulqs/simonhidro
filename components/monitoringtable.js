@@ -31,6 +31,10 @@ function Montab() {
       filter: 'includes',
     },
     {
+      Header: 'Jumlah Lubang',
+      accessor: 'lubang',
+    },
+    {
       Header: 'Suhu ℃',
       accessor: 'suhu',
     },
@@ -61,7 +65,7 @@ function Montab() {
   ], []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Memuat data table pada database... *refresh jika tidak berhasil</div>;
   }
 
   return (

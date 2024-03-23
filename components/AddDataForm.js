@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const AddForm = () => {
   const [formData, setFormData] = useState({
+    lubang: '',
     suhu: '',
     pH: '',
     ec: '',
@@ -25,6 +26,7 @@ const AddForm = () => {
       await axios.post('/api/addData', newData);
       alert('Data added successfully!');
       setFormData({
+        lubang: '',
         suhu: '',
         pH: '',
         ec: '',
@@ -44,6 +46,25 @@ const AddForm = () => {
         <form class="max-w-md mx-auto" onSubmit={handleSubmit}>
         <h2 className='text-2xl font-medium lg:text-3xl'>Tambah Data</h2>
         <div class="grid md:grid-cols-2 md:gap-6 mt-6">
+          <div class="relative z-0 w-full mb-5 group">
+              <select
+              name="lubang"
+              id="lubang"
+              value={formData.lubang}
+              onChange={handleChange}
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+              required
+              >
+              <option value="">Pilih lubang</option>
+              {/* Generate pilihan dari nilai 1 - 5 */}
+              {[1, 2, 3, 4, 5].map((value) => (
+                  <option key={value} value={value}>
+                  {value}
+                  </option>
+              ))}
+              </select>
+              <label for="lubang" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Lubang</label>
+          </div>
             <div class="relative z-0 w-full mb-5 group">
                 <input 
                 type="text" 
@@ -53,6 +74,8 @@ const AddForm = () => {
                 placeholder=" " required />
                 <label for="suhu" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Suhu</label>
             </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
                 <input 
                 type="text" 
@@ -62,8 +85,6 @@ const AddForm = () => {
                 placeholder=" " required />
                 <label for="pH" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">pH</label>
             </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
                 <input
                 type="text"
@@ -73,6 +94,8 @@ const AddForm = () => {
                 placeholder=" " required />
                 <label for="ec" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">EC</label>
             </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
                 <input 
                 type="text" 
@@ -82,8 +105,6 @@ const AddForm = () => {
                 placeholder=" " required />
                 <label for="berat" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Berat</label>
             </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
                 <input 
                 type="text" 
@@ -93,7 +114,9 @@ const AddForm = () => {
                 placeholder=" " required />
                 <label for="tinggi" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tinggi tanaman</label>
             </div>
-            <div class="relative z-0 w-full mb-5 group">
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+          <div class="relative z-0 w-full mb-5 group">
                 <input 
                 type="text" 
                 name="daun" id="daun" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" 
@@ -102,8 +125,6 @@ const AddForm = () => {
                 placeholder=" " required />
                 <label for="daun" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Jumlah daun</label>
             </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
                 <input 
                 type="text" 
