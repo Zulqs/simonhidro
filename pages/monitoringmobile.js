@@ -10,7 +10,7 @@ import Container from "../components/container";
 import Suhuchart from "../components/suhuchart";
 import Phchart from "../components/phchart";
 import Montab from "../components/monitoringtable";
-import AddForm from "../components/addform";
+import AddForm from "../components/AddDataForm";
 
 // Komponen Monitoring sebagai functional component
 const Monitoringmobile = () => {
