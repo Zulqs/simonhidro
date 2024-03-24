@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Table, { SelectColumnFilter } from './Table';
+import axios from 'axios';
 
 function Montab() {
   const [data, setData] = useState([]);
@@ -62,7 +63,26 @@ function Montab() {
       Header: 'Warna Daun',
       accessor: 'warnadaun',
     },
+    {
+      Header: 'Hapus',
+      Cell: ({ row }) => (
+        <button onClick={() => handleDelete(row.original.id)} className="text-red-600 font-bold">
+          Hapus
+        </button>
+      ),
+    },
   ], []);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/deleteData?id=${id}`);
+      setData(data.filter(item => item.id !== id));
+      alert('Data deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting data:', error);
+      alert('Error deleting data!');
+    }
+  };
 
   if (loading) {
     return <div>Memuat data table pada database... *refresh jika tidak berhasil</div>;
