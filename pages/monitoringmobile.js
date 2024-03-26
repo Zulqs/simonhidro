@@ -51,11 +51,6 @@ const Monitoringmobile = () => {
       </Head>
       <Container className="-mb-8"><BackButton/></Container>
       <Container>
-        <p className="font-semibold my-3 text-2xl">Monitoring Suhu</p>
-        <div className="h-[300px] bg-gray-100 rounded-xl pt-14 pr-7 pb-3"><Suhuchart/></div>
-        <p className="font-semibold my-3 text-2xl mt-7">Monitoring pH</p>
-        <div className="h-[300px] bg-gray-100 rounded-xl pt-14 pr-7 pb-3"><Phchart/></div>
-
         <div className="flex items-center justify-center">
           <button
             onClick={toggleAddForm}
