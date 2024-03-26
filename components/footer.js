@@ -6,7 +6,7 @@ import Container from "./container";
 // Komponen Footer
 export default function Footer() {
   // Navigasi dan informasi hukum yang akan ditampilkan di footer
-  const navigation = ["Ref1", "Ref2", "Ref3"];
+  const navigation = ["Jalan Griya Permata V Blok C No. 11, Pancur Batu, Sumatera Utara, 20353", "yosua.yosephine29@gmail.com", "081535280224"];
   const legal = ["Terms", "Privacy", "Legal"];
 
   return (
@@ -41,10 +41,10 @@ export default function Footer() {
 
           {/* Bagian Navigasi */}
           <div>
-            <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
+            <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:-ml-12">
               {/* Mapping dan menampilkan link navigasi */}
               {navigation.map((item, index) => (
-                <Link key={index} href="/" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-trueGray-700">
+                <Link key={index} href="#" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-trueGray-700">
                   {item}
                 </Link>
               ))}
@@ -56,7 +56,7 @@ export default function Footer() {
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
               {/* Mapping dan menampilkan link informasi hukum */}
               {legal.map((item, index) => (
-                <Link key={index} href="/" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-trueGray-700">
+                <Link key={index} href="#" className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-green-500 focus:text-green-500 focus:bg-green-100 focus:outline-none dark:focus:bg-trueGray-700">
                   {item}
                 </Link>
               ))}

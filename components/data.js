@@ -2,10 +2,11 @@
 import {
   FaceSmileIcon,
   ChartBarSquareIcon,
-  CursorArrowRaysIcon,
+  FunnelIcon,
   DevicePhoneMobileIcon,
   AdjustmentsHorizontalIcon,
   SunIcon,
+  HomeIcon,
 } from "@heroicons/react/24/solid";
 
 // Import gambar yang akan digunakan pada keunggulan pertama dan kedua
@@ -20,18 +21,28 @@ const benefitOne = {
   bullets: [
     {
       title: "Keunggulan 1",
-      desc: "Penjelasan singkat.",
-      icon: <FaceSmileIcon />,
+      desc: "Hidroponik menggunakan air dan nutrisi secara lebih efisien dibandingkan dengan sistem tanam tradisional.",
+      icon: <FunnelIcon />,
     },
     {
       title: "Keunggulan 2",
-      desc: "Penjelasan singkat.",
+      desc: "Tanaman hidroponik umumnya tumbuh lebih cepat dibandingkan dengan tanaman yang ditanam di tanah.",
       icon: <ChartBarSquareIcon />,
     },
     {
       title: "Keunggulan 3",
-      desc: "Penjelasan singkat.",
-      icon: <CursorArrowRaysIcon />,
+      desc: "Hidroponik dapat dilakukan di lahan yang sempit, bahkan di dalam ruangan.",
+      icon: <HomeIcon />,
+    },
+    {
+      title: "Keunggulan 4",
+      desc: "Dalam hidroponik, faktor-faktor seperti pH air, nutrisi, dan pencahayaan dapat dikontrol dengan mudah.",
+      icon: <DevicePhoneMobileIcon />,
+    },
+    {
+      title: "Keunggulan 5",
+      desc: "Hidroponik dapat menjadi kegiatan yang menyenangkan dan edukatif bagi semua orang.",
+      icon: <FaceSmileIcon />,
     },
   ],
 };
