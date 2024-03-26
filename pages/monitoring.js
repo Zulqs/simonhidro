@@ -50,9 +50,9 @@ const Monitoring = () => {
       <Navbar />
 
       <Container>
-
+      <SectionTitle title="Tabel Monitoring" />
         <div className="flex items-center justify-center">
-          <SectionTitle title="Tabel Monitoring" />
+          
           <button
             onClick={toggleAddForm}
             className={`my-6 focus:ring-4 focus:outline-non font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${
