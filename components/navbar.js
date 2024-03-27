@@ -15,6 +15,9 @@ const Navbar = () => {
   const { data: session } = useSession()
   const user = session?.user;
 
+  const handleDivClick = () => {
+    <ThemeChanger/>};
+
   // Jika pengguna bukan admin, tampilkan menu standar
   if (user?.role !== "admin") {
     return (
@@ -79,6 +82,10 @@ const Navbar = () => {
                       <Link href="/auth/signin" className="w-full px-6 py-2 mt-3 text-center text-white bg-green-600 rounded-md lg:ml-5">         
                           Monitoring
                       </Link>
+                      <div className="flex justify-center px-6 py-3 my-3 text-white dark:bg-white bg-gray-200 rounded-md md:ml-5 w-full text-center"
+                        onClick={handleDivClick}>
+                        <ThemeChanger />
+                      </div>
                     </>
                   </Disclosure.Panel>
                 </div>
@@ -181,6 +188,10 @@ const Navbar = () => {
                       <button type="button" onClick={() => signOut()} className="px-6 py-2 text-white bg-red-700 rounded-md md:ml-5 w-full">
                         Keluar
                       </button>
+                      <div className="flex justify-center px-6 py-3 my-3 text-white dark:bg-white bg-gray-200 rounded-md md:ml-5 w-full text-center"
+                      onClick={handleDivClick}>
+                        <ThemeChanger />
+                      </div>
                     </>
                   </Disclosure.Panel>
                 </div>
