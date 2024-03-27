@@ -9,7 +9,7 @@ function Montab() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('https://simonhidro.vercel.app/api/getData');
+        const response = await fetch('api/getData');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -26,17 +26,17 @@ function Montab() {
 
   const columns = React.useMemo(() => [
     {
-      Header: 'Tanggal',
+      Header: 'TANGGAL',
       accessor: 'tanggal',
       Filter: SelectColumnFilter,
       filter: 'includes',
     },
     {
-      Header: 'Jumlah Lubang',
+      Header: 'JUMLAH LUBANG',
       accessor: 'lubang',
     },
     {
-      Header: 'Suhu ℃',
+      Header: 'SUHU (℃)',
       accessor: 'suhu',
     },
     {
@@ -44,24 +44,33 @@ function Montab() {
       accessor: 'ph',
     },
     {
-      Header: 'EC',
+      Header: 'EC (mS/cm)',
       accessor: 'ec',
     },
     {
-      Header: 'Berat',
+      Header: 'BERAT (gr)',
       accessor: 'berat',
     },
     {
-      Header: 'Tinggi tanaman',
+      Header: 'TINGGI TANAMAN (cm)',
       accessor: 'tinggi',
     },
     {
-      Header: 'Jumlah daun',
+      Header: 'JUMLAH DAUN',
       accessor: 'daun',
     },
     {
-      Header: 'Warna Daun',
+      Header: 'WARNA DAUN',
       accessor: 'warnadaun',
+    },
+    {
+      Header: 'STATUS',
+      accessor: 'property',
+      Cell: ({ value }) => (
+        <span className={`text-sm ${value !== '-' ? 'text-orange-600' : 'text-gray-500'}`}>
+          {value}
+        </span>
+      )
     },
     {
       Header: 'Hapus',
@@ -90,7 +99,7 @@ function Montab() {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="">
           <h1 className="text-xl font-semibold">Tabel monitoring</h1>
         </div>
